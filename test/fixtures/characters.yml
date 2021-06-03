@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  url_imagen: MyString
+  nombre: MyString
+  edad: 1
+  peso: 1.5
+  historia: MyText
+
+two:
+  url_imagen: MyString
+  nombre: MyString
+  edad: 1
+  peso: 1.5
+  historia: MyText

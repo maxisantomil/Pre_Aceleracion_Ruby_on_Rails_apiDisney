@@ -52,7 +52,7 @@ class MoviesController < ApplicationController
     def characters
         @movie = Movie.find(params[:id])
         render json: {characters: @movie.characters }
-    end
+    end 
     
     #creo metodo para pasarle los parametros 
     private    

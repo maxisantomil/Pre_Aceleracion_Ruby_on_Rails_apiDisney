@@ -17,11 +17,25 @@ Rails.application.routes.draw do
    put'/movies/:id', to:'movies#update'
  
    delete'/movies/:id', to: 'movies#destroy'
+
+   get '/movies/:id/characters', to:'movies#characters'
  
  #---------------------------------------------------------------------------------------------------
- 
- 
-   resources :characters
- 
+  # simplifico con resources para characters y genres
+   #resources :characters
+
+   resources :characters do
+    resources :movies
+  end
+
    resources :genres
+
+   resources :users, only: [:create,:destroy]
+
+   post 'users/login', to: 'users#login'
+
+   get 'users/profile', to: 'users#profile'
+
+   get 'users/auto_login', to: 'users#auto_login'
+
 end

@@ -1,8 +1,11 @@
 class CharactersController < ApplicationController
-
     #GET: http://localhost:3000/characters
     def index 
         @characters= Character.all;
+       # if !params[:search].nil? && params[:search].present?
+       #     @characters = CharactersSearchService.search(@characters,params[:search])
+       #     render json:characters
+       # end
         render json:@characters, only: [:id,:url_imagen,:nombre]
     end
     #GET: http://localhost:3000/characters/:id
@@ -48,6 +51,16 @@ class CharactersController < ApplicationController
         @character.destroy
     end
 
+    def movies
+        @character = Character.find(params[:id])
+        render json: {movies: @character.movies }
+    end
+
+    def character_create
+        character = Character.find(params[:id])
+        movie= Movie.new(params_film,character)
+        movie.save
+    end
     #creo metodo para pasarle los parametros 
     private    
     def character_params

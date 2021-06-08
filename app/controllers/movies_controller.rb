@@ -53,6 +53,9 @@ class MoviesController < ApplicationController
         @movie = Movie.find(params[:id])
         render json: {characters: @movie.characters }
     end 
+
+
+    
     
     #creo metodo para pasarle los parametros 
     private    

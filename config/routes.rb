@@ -30,6 +30,8 @@ Rails.application.routes.draw do
 
    resources :genres
 
+   #-----------------------------------------User-----------------------------------------------------
+   
    resources :users, only: [:create,:destroy]
 
    post 'users/login', to: 'users#login'

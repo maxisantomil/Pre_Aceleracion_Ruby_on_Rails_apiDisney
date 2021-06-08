@@ -5,7 +5,7 @@ class UsersController < ApplicationController
         @user =  User.create(email: params[:email],password: params[:password])
         if @user.valid?
             @user.save
-            #UserMailer.with(user: @user).welcome_email.deliver_later
+            UserMailer.with(user: @user).welcome_email.deliver_now
             payload = {user_id: @user.id}
             token = JWT.encode(payload, 'okcool', 'HS256')
             render json: {user:@user.email, token: token}, status: :created
@@ -36,15 +36,15 @@ class UsersController < ApplicationController
       user.destroy
     end
 
-    #def profile
-    #    decoded_token = JWT.decode(request.headers[:token], 'okcool', true,{algorithm: 'HS256'})
-    #    foundProfile = User.find(decoded_token[0]["user"])
-    #    if foundProfile
-    #        render json: foundProfile
-    #    else
-    #        render json: {error: "nose se encontro el perfil del usuario"}
-    #    end
-    #end
+    def profile
+        decoded_token = JWT.decode(request.headers[:token], 'okcool', true,{algorithm: 'HS256'})
+        foundProfile = User.find(decoded_token[0]["user"])
+        if foundProfile
+            render json: foundProfile
+        else
+            render json: {error: "nose se encontro el perfil del usuario"}
+        end
+    end
     
     private 
     def user_params

@@ -15,7 +15,7 @@ _Estas instrucciones te permitirán obtener una copia del proyecto en funcionami
 * 4- Para iniciar el servidor, se posiciona dentro de la carpeta del proyecto , abre la consola y   ejecuta     'rails server' 
 * 5- Si todo esta instalado correctamente, en su navegador ingrese a: http://localhost:3000/ y deberia ver la pantalla inicial. 
 
-## Para una instalacion detallada de acuerdo a su sistema operativo ingrese al siguiente link:
+### Para una instalacion detallada de acuerdo a su sistema operativo ingrese al siguiente link:
     https://gorails.com/setup/ubuntu/20.04#ruby-rbenv 
 ### Para poder observar las diferentes request,copie el siguiente link,dirigase a su espacio de trabajo de Postman e importelo.
 

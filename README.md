@@ -16,7 +16,7 @@ _Estas instrucciones te permitirán obtener una copia del proyecto en funcionami
 * 5- Si todo esta instalado correctamente, en su navegador ingrese a: http://localhost:3000/ y deberia ver la pantalla inicial. 
 
 ## Para una instalacion detallada de acuerdo a su sistema operativo ingrese al siguiente link:
-    [GoRails](https://gorails.com/setup/ubuntu/20.04#ruby-rbenv)
+    https://gorails.com/setup/ubuntu/20.04#ruby-rbenv 
 ### Para poder observar las diferentes request,copie el siguiente link,dirigase a su espacio de trabajo de Postman e importelo.
 
 [Documentacion ApiDisney-Postman](https://www.getpostman.com/collections/b3f4bc52d7fa929f04a1)

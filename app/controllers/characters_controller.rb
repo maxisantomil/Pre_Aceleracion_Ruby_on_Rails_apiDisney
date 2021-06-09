@@ -1,7 +1,8 @@
 class CharactersController < ApplicationController
+    MAX_PAGINATION_LIMIT = 2
     #GET: http://localhost:3000/characters
     def index 
-        @characters= Character.all;
+        @characters= Character.limit(limit).offset(params[:offset]);
        # if !params[:search].nil? && params[:search].present?
        #     @characters = CharactersSearchService.search(@characters,params[:search])
        #     render json:characters
@@ -65,5 +66,12 @@ class CharactersController < ApplicationController
     private    
     def character_params
         params.require(:character).permit(:url_imagen, :nombre, :edad, :peso, :historia)
+    end
+
+    def limit
+        [
+            params.fetch(:limit,MAX_PAGINATION_LIMIT).to_i,
+            MAX_PAGINATION_LIMIT
+        ].min
     end
 end

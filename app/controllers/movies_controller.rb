@@ -1,8 +1,10 @@
 class MoviesController < ApplicationController
 
+    MAX_PAGINATION_LIMIT = 5
+    
     #GET: http://localhost:3000/movies
     def index 
-        @movies= Movie.all;
+        @movies= Movie.limit(limit).offset(params[:offset]);
         render json: @movies, only: [:id,:url_imagen,:titulo,:fecha_creacion]    
     end
 
@@ -61,5 +63,12 @@ class MoviesController < ApplicationController
     private    
     def movie_params
         params.require(:movie).permit(:url_imagen, :titulo, :fecha_creacion, :calificacion)
+    end
+
+    def limit
+        [
+            params.fetch(:limit,MAX_PAGINATION_LIMIT).to_i,
+            MAX_PAGINATION_LIMIT
+        ].min
     end
 end

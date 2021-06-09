@@ -5,7 +5,9 @@ class UsersController < ApplicationController
         @user =  User.create(email: params[:email],password: params[:password])
         if @user.valid?
             @user.save
+            #al crear usuario llamo al UserMailer para enviar el respectivo mail de registracion.
             UserMailer.with(user: @user).welcome_email.deliver_now
+            
             payload = {user_id: @user.id}
             token = JWT.encode(payload, 'okcool', 'HS256')
             render json: {user:@user.email, token: token}, status: :created

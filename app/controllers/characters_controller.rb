@@ -3,6 +3,7 @@ class CharactersController < ApplicationController
     #GET: http://localhost:3000/characters
     def index 
         @characters= Character.limit(limit).offset(params[:offset]);
+        #un posible servicio de buscador , que pasa por parametro lo que quiere buscar
        # if !params[:search].nil? && params[:search].present?
        #     @characters = CharactersSearchService.search(@characters,params[:search])
        #     render json:characters
@@ -57,17 +58,20 @@ class CharactersController < ApplicationController
         render json: {movies: @character.movies }
     end
 
-    def character_create
+    #la idea era crear  la asociacion entre las dos tablas
+    def characterMovie_create
         character = Character.find(params[:id])
-        movie= Movie.new(params_film,character)
+        movie= Movie.new(movies_params,character)
         movie.save
     end
+
     #creo metodo para pasarle los parametros 
     private    
     def character_params
         params.require(:character).permit(:url_imagen, :nombre, :edad, :peso, :historia)
     end
 
+    #
     def limit
         [
             params.fetch(:limit,MAX_PAGINATION_LIMIT).to_i,
